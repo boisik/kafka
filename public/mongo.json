@@ -1,0 +1,23 @@
+{
+  "name": "mongo",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "connection.uri": "mongodb://admin:my_password@192.168.0.102:27017",
+    "database": "my_table_copy",
+    "collection": "my_table_copy",
+    "topics": "ahosan.ahosan.my_table_copy",
+    "tasks.max": "1",
+    "transforms": "unwrap,rename",
+    "transforms.unwrap.type": "org.apache.kafka.connect.transforms.ExtractField$Value",
+    "transforms.unwrap.field": "after",
+    "transforms.rename.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.rename.renames": "id:_id",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+    "errors.tolerance": "all",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true"
+  }
+}
+
